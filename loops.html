@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loop Selection</title>
+</head>
+<body>
+    <script>
+    function fun1(){
+        alert("While loop");
+        var ctr = 0;
+        while (ctr < 10)
+        {
+            alert(ctr);
+            ctr++;
+        }
+    }
+    function fun2(){
+        alert("Do While loop");
+        var ctr = 0;
+        do {
+            alert(ctr);
+            ctr++;
+        } while (ctr < 10);
+    }
+    function fun3(){
+        alert("For loop");
+        for (var ctr = 0; ctr < 10; ctr++) {
+            alert(ctr);
+        }
+    }
+    function fun4(){
+        alert("For In loop");
+    
+        }
+    
+    </script>
+  <form>
+    <label><input type="button"  onclick="fun1()" value="while"></label><br>
+    <label><input type="button"  onclick="fun2()" value="doWhile"></label><br>
+    <label><input type="button"  onclick="fun3()" value="for"> </label><br>
+    <label><input type="button"  onclick="fun4()" value="forIn"></label><br>
+  </form>
+</body>
+</html>
