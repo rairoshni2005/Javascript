@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>All Loops (Switch case working)</title>
+    </head>
+    <body>
+        <script>
+            function fun1() {
+                alert("Switch Case");
+
+                var score=parseInt(prompt("Enter the score"))
+                var remark;
+                switch(score)
+                {
+
+                case 5:
+                remark="Excellent"
+                break;
+
+                case 4:
+                remark="Very Good"
+                break;
+
+                case 3:
+                remark="Good"
+                break;
+
+                case 2:
+                remark="Average"
+                break;
+
+                case 1:
+                remark="Below Average"
+                break;
+
+                default:
+                remark="Incorrect"
+
+                }
+                alert(remark)
+            }
+            
+            function fun2() {
+                alert("For Loop");
+            }
+            
+            function fun3() {
+                alert("While Loop");
+            }
+            
+            function fun4() {
+                alert("Do While Loop");
+            }
+            
+            function fun5() {
+                alert("For Each");
+            }
+        </script>
+        <input type="button" onclick="fun1()" value="Switch Case">
+        <br>
+        <input type="button" onclick="fun2()" value="For Loop">
+        <br>
+        <input type="button" onclick="fun3()" value="While Loop">
+        <br>
+        <input type="button" onclick="fun4()" value="Do While Loop">
+        <br>
+        <input type="button" onclick="fun5()" value="For Each">
+    </body>
+</html>
