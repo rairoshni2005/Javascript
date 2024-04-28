@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function fun1() {
+                alert("Listening...wait.....");
+            }
+            window.onload = function () {
+                d1.addEventListener("click", fun1(), true);
+            };
+        </script>
+    </head>
+    <body onclick="alert('hello')">
+        <form onclick="alert('hi from form')">
+            <input
+                type="button"
+                value="register"
+                onclick="alert('Namaste')"
+                id="d1"
+            />
+        </form>
+    </body>
+</html>
