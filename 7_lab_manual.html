@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #eba63f;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #f1cb92;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #000000;
+        margin-bottom: 20px;
+      }
+      .label-container {
+        margin-bottom: 20px;
+      }
+      .label-container label {
+        font-size: 18px;
+        margin-right: 10px;
+      } 
+      .label-container input[type="number"] {
+        width: 100px;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      button {
+        background-color: #eba63f;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #f8ce6a;
+      }
+      .flip-clock {
+        display: inline-block;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 36px;
+        color: #f9f2f2;
+        margin-top: 20px;
+      }
+      .flip-clock-piece {
+        display: inline-block;
+        margin: 0 5px;
+        border-radius: 5px;
+        background-color: #030303;
+        padding: 5px 10px;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Countdown Timer</h1>
+    <label for="duration">Enter countdown duration (seconds):</label>
+    <input type="number" id="duration" min="1" step="1">
+    <button onclick="startCountdown()">Start Countdown</button>
+    <div class="flip-clock" id="timer">
+      <div class="flip-clock-piece" id="flip-hours"></div>
+      <div class="flip-clock-piece" id="flip-minutes"></div>
+      <div class="flip-clock-piece" id="flip-seconds"></div>
+    </div>
+  </div>
+  <script>
+    function startCountdown() {
+      let durationInput = document.getElementById('duration');
+      let duration = parseInt(durationInput.value, 10);
+      if (isNaN(duration) || duration <= 0) {
+        alert("Please enter a valid positive number for the countdown duration.");
+        return;
+      }
+      countdownTimer(duration);
+    }
+    function countdownTimer(seconds) {
+      let hoursDisplay = document.getElementById('flip-hours');
+      let minutesDisplay = document.getElementById('flip-minutes');
+      let secondsDisplay = document.getElementById('flip-seconds');
+      let timerContainer = document.getElementById('timer');
+
+      let timerInterval = setInterval(function() {
+        if (seconds <= 0) {
+          clearInterval(timerInterval);
+          timerContainer.innerHTML = "<div>Time Over!</div>";
+          setTimeout(function() {
+            timerContainer.innerHTML = `
+              <div class="flip-clock-piece" id="flip-hours"></div>
+              <div class="flip-clock-piece" id="flip-minutes"></div>
+              <div class="flip-clock-piece" id="flip-seconds"></div>`;
+            startCountdown(); 
+          }, 3000); 
+          return;
+        }
+        let hours = Math.floor(seconds / 3600);
+        let remainingSeconds = seconds % 3600;
+        let minutes = Math.floor(remainingSeconds / 60);
+        let remainingSecondsFinal = remainingSeconds % 60;
+
+        hoursDisplay.textContent = padNumber(hours);
+        minutesDisplay.textContent = padNumber(minutes);
+        secondsDisplay.textContent = padNumber(remainingSecondsFinal);
+        seconds--;
+      }, 1000);
+    }
+    function padNumber(num) {
+      return num < 10 ? '0' + num : num;
+    }
+  </script>
+</body>
+</html>
