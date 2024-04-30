@@ -1,1 +1,34 @@
 <!-- 1. Write simple javascript with HTML for arithmetic expression evaluation & message printingDevelop -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <p>Enter an expression (e.g., 2 + 3, 5 * (7 - 2)):</p>
+    <input type="text" id="expressionInput" placeholder="Enter expression...">
+    <br>
+    <button onclick="evaluateExpression()">Evaluate</button>
+    <br>
+    <p id="message"></p>
+    <script>
+        function evaluateExpression() {
+            const expression = document.getElementById("expressionInput").value;
+            let result;
+
+            try {
+                // Evaluate the expression using eval() (careful with security)
+                result = eval(expression);
+            } catch (error) {
+                result = "Invalid expression!";
+            }
+
+            // Display the result
+            document.getElementById("message").textContent = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
