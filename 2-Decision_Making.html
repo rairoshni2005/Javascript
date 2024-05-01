@@ -1,0 +1,55 @@
+<!-- 2.JavaScrite to use decision making & looping statements -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Making & Looping Example</title>
+</head>
+<body>
+    <h1>Fun with JavaScript</h1>
+    <p>Enter a number:</p>
+    <input type="number" id="numberInput">
+    <br>
+    <button onclick="checkNumber()">Check Number</button>
+    <br>
+    <p id="message"></p>
+    <script>
+        function checkNumber() {
+            const number = document.getElementById("numberInput").value;
+            let message = "";
+
+            // Check if a number is entered
+            if (isNaN(number)) {
+                message = "Please enter a valid number.";
+            } else {
+                // Check if the number is even using a conditional statement
+                if (number % 2 === 0) {
+                    message = `${number} is even.`;
+                } else {
+                    message = `${number} is odd.`;
+                }
+
+                // Print numbers from 1 to the entered number using a for loop
+                message += "<br> Numbers from 1 to " + number + ": ";
+                for (let i = 1; i <= number; i++) {
+                    message += i + " ";
+                }
+
+                // Print even numbers from 0 to the entered number (inclusive) using a while loop
+                message += "<br> Even numbers from 0 to " + number + ": ";
+                let count = 0;
+                while (count <= number) {
+                    if (count % 2 === 0) {
+                        message += count + " ";
+                    }
+                    count++;
+                }
+            }
+
+            // Display the message
+            document.getElementById("message").innerHTML = message;
+        }
+    </script>
+</body>
+</html>
