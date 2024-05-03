@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Area Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6ebfa;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #184bf2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #95a7ed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f3f3f3;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function calculateRectangleArea(length, width) {
+            if (length <= 0 || width <= 0) {
+                return "Length and width must be positive numbers";
+            } 
+            const area = length * width;  
+            return area;
+        }
+        function formatNumberWithDecimalPlaces(number, decimalPlaces) {
+            if (isNaN(number)) {
+                return "Invalid number";
+            }
+            const formattedNumber = number.toFixed(decimalPlaces); 
+            return formattedNumber;
+        }
+        function calculateAndDisplayArea() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const area = calculateRectangleArea(length, width);
+            const formattedArea = formatNumberWithDecimalPlaces(area, 2);
+            document.getElementById('result').innerText = "The area of the rectangle is: " + formattedArea;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Rectangle Area Calculator</h1>
+        <label for="length">Length:</label>
+        <input type="number" id="length" name="length" step="any"><br><br>
+        <label for="width">Width:</label>
+        <input type="number" id="width" name="width" step="any"><br><br>
+        <button onclick="calculateAndDisplayArea()">Calculate Area</button><br><br>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
