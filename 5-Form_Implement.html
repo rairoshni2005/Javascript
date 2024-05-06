@@ -1,0 +1,100 @@
+<!-- Create a webpage using form elements and implement form events -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #061a7f;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    form {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #141416;
+        border-radius: 5px;
+        background-color: #bad1f2;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #061a7f;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #5094f3;
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Restaurant Menu</h1>
+</header>
+
+<form id="orderForm">
+    <label>
+        <input type="checkbox" name="burger" value="Burger"> Burger (Rs.189)
+    </label>
+    <label>
+        <input type="checkbox" name="pizza" value="Pizza"> Pizza (Rs.79)
+    </label>
+    <label>
+        <input type="checkbox" name="salad" value="Salad"> Salad (Rs.120)
+    </label>
+    <label>
+        <input type="checkbox" name="drink" value="Drink"> Drink (Rs.20)
+    </label>
+    <button type="button" onclick="submitOrder()">Submit Order</button>
+</form>
+
+<script>
+function submitOrder() {
+    var form = document.getElementById("orderForm");
+    var selectedItems = [];
+
+    // Loop through all checkboxes to find selected items
+    var checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedItems.push(checkbox.value);
+        }
+    });
+
+    // If no items selected, show alert
+    if (selectedItems.length === 0) {
+        alert("Please select at least one item!");
+        return;
+    }
+
+    // Display selected items
+    var orderSummary = "You have ordered:\n";
+    selectedItems.forEach(function(item) {
+        orderSummary += "- " + item + "\n";
+    });
+
+    alert(orderSummary);
+}
+</script>
+
+</body>
+</html>
