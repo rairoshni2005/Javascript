@@ -1,0 +1,149 @@
+<!--Develop a webpage for validation of form fields using regular expressions.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Application Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e6edfa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #0e60e6;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #749af3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Medical Application Form</h2>
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="patientName">Patient Name:</label><br>
+        <input type="text" id="patientName" name="patientName" required><br>
+        <span id="nameError" class="error"></span><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <span id="emailError" class="error"></span><br>
+        
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+        <span id="phoneError" class="error"></span><br>
+        
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br>
+        <span id="dobError" class="error"></span><br>
+        
+        <label for="gender">Gender:</label><br>
+        <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <span id="genderError" class="error"></span><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var patientName = document.getElementById("patientName").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var dob = document.getElementById("dob").value;
+        var gender = document.getElementById("gender").value;
+        var nameRegex = /^[a-zA-Z\s]+$/;
+        var emailRegex = /^\S+@\S+\.\S+$/;
+        var phoneRegex = /^[0-9]{10}$/;
+
+        var isValid = true;
+
+        if (!nameRegex.test(patientName)) {
+            document.getElementById("nameError").innerText = "Name should contain only letters and spaces";
+            isValid = false;
+        } else {
+            document.getElementById("nameError").innerText = "";
+        }
+
+        if (!emailRegex.test(email)) {
+            document.getElementById("emailError").innerText = "Invalid email address";
+            isValid = false;
+        } else {
+            document.getElementById("emailError").innerText = "";
+        }
+
+        if (!phoneRegex.test(phone)) {
+            document.getElementById("phoneError").innerText = "Phone number should be 10 digits";
+            isValid = false;
+        } else {
+            document.getElementById("phoneError").innerText = "";
+        }
+
+        if (dob === "") {
+            document.getElementById("dobError").innerText = "Date of Birth is required";
+            isValid = false;
+        } else {
+            document.getElementById("dobError").innerText = "";
+        }
+
+        if (gender === "") {
+            document.getElementById("genderError").innerText = "Gender is required";
+            isValid = false;
+        } else {
+            document.getElementById("genderError").innerText = "";
+        }
+
+        return isValid;
+    }
+</script>
+</body>
+</html>
