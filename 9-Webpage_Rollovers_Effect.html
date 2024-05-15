@@ -1,0 +1,106 @@
+<!--Develop a webpage with rollovers effect and implemet menus, status bars, sideshow, banner and web page protection.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Webpage</title>
+<style>
+    .menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+    .menu li {
+        float: left;
+    }
+    .menu li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    .menu li a:hover {
+        background-color: #111;
+    }
+    .banner {
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+    }
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+    .mySlides {
+        display: none;
+    }
+    .status-bar {
+        background-color: #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+</ul>
+<div class="banner">
+    <h2>Welcome to Resturant</h2>
+    <p>Explore our menu </p>
+</div>
+
+<div class="slideshow-container">
+    <div class="mySlides">
+        <img src="slide1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="slide2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="slide3.jpg" style="width:100%">
+    </div>
+</div>
+
+<div class="status-bar">
+    <p>This is the status bar. It provides information or messages.</p>
+</div>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 2000); 
+    }
+
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) {
+            return false;
+        }
+    };
+    document.addEventListener("contextmenu", function(e) {
+        e.preventDefault();
+    }, false);
+</script>
+
+</body>
+</html>
