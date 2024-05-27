@@ -1,0 +1,33 @@
+<!-- enter a string in a textbox and replace it chennai only if it conatains TAMIL NADU -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>String Replacement</title>
+</head>
+<body>
+
+<h2>String Replacement</h2>
+<p>Enter a string:</p>
+<input type="text" id="inputText">
+<button onclick="replaceString()">Replace</button>
+<p id="output"></p>
+
+<script>
+function replaceString() {
+    var userInput = document.getElementById("inputText").value;
+
+    if (userInput.includes("TAMIL NADU")) {
+        var modifiedString = userInput.replace("TAMIL NADU", "Chennai");
+        document.getElementById("output").innerText = "Modified string: " + modifiedString;
+    } else {
+        document.getElementById("output").innerText = "The input string does not contain 'TAMIL NADU'.";
+    }
+}
+</script>
+
+</body>
+</html>
+
+      
